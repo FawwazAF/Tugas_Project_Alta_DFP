@@ -20,8 +20,8 @@ func InitDb() {
 	*/
 
 	//Set connection string here, use mysql username password and schema at your pc
-	//connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local"
-	connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local" // doni local computer
+	connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local"
+	//connectionString := "root:02021996Doni*@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local" // doni local computer
 	var err error
 	DB, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {

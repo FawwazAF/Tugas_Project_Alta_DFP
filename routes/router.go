@@ -17,7 +17,9 @@ func New(e *echo.Echo) {
 	//GET show all product by category and type (Mba patmiza)
 
 	//POST Add product to shopping cart (Mas Doni)
-	e.POST("carts/:id_user/:id_product", controller.CreateShoppingCartController)
+	e.POST("carts/:user_id/:product_id", controller.CreateShoppingCartController)
+	//DELETE product to shopping cart (Mas Doni)
+	e.DELETE("carts/:user_id/:product_id", controller.DeleteShoppingCartController)
 
 	//GET product form shopping cart (Fawwaz)
 	e.GET("/cart", controller.ProductInCart)
