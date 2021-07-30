@@ -2,7 +2,6 @@ package config
 
 import (
 	_ "alta/project/model"
-	"os"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -13,10 +12,15 @@ var HTTP_PORT int
 
 func InitDb() {
 
+	// Framecode for environmental
+	/*
+		envVar := "root:Minus12345@tcp(localhost:3306)/new_schema?charset=utf8&parseTime=True&loc=Local"
+		connectionString := os.Getenv(envVar)
+	*/
+
 	//Set connection string here, use mysql username password and schema at your pc
-	envVar := "root:Minus12345@tcp(localhost:3306)/new_schema?charset=utf8&parseTime=True&loc=Local"
-	connectionString := os.Getenv(envVar)
-	// connectionString := "root:Minus12345@tcp(localhost:3306)/new_schema?charset=utf8&parseTime=True&loc=Local"
+	connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local"
+
 	var err error
 	DB, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {
@@ -30,10 +34,13 @@ func InitPort() {
 
 	HTTP_PORT = 8080 //Port Setting
 
-	// HTTP_PORT, err = strconv.Atoi(os.Getenv("HTTP_PORT"))
-	// if err != nil {
-	// 	panic(err)
-	// }
+	// Framecode for environmental
+	/*
+		HTTP_PORT, err = strconv.Atoi(os.Getenv("HTTP_PORT"))
+		if err != nil {
+		panic(err)
+		}
+	*/
 }
 
 func InitMigrate() {

@@ -1,25 +1,23 @@
 package routes
 
 import (
-	"alta/project/constant"
 	"alta/project/controller"
 
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
 )
 
 func New(e *echo.Echo) {
+	//Basic Routes for Skeleton **Dont Touch**
+	e.GET("/users", controller.GetManyController)
+	e.POST("/users", controller.DummyController)
+	e.POST("/products", controller.NewItem)
 
-	e.GET("/users/:id", controller.GetUserDetailController)
+	//Work your code here
 
-	//Register
-	e.POST("/login", controller.LoginUsersController)
+	//GET show all product by category and type (Mba patmiza)
 
-	//Login
-	eJwt := e.Group("/jwt")
-	eJwt.Use(middleware.JWT([]byte(constant.SECRET_JWT)))
+	//POST Add product to shopping cart (Mas Doni)
 
-	// Authenticated Router for users
-	eJwt.GET("/users/:id", controller.GetUserDetailController)
+	//GET product form shopping cart (Fawwaz)
 
 }
