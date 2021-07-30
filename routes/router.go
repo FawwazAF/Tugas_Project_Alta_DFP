@@ -19,5 +19,6 @@ func New(e *echo.Echo) {
 	//POST Add product to shopping cart (Mas Doni)
 
 	//GET product form shopping cart (Fawwaz)
+	e.GET("/cart", controller.ProductInCart)
 
 }
