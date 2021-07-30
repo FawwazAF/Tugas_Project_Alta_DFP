@@ -1,6 +1,7 @@
 package config
 
 import (
+	"alta/project/model"
 	_ "alta/project/model"
 
 	"gorm.io/driver/mysql"
@@ -19,8 +20,8 @@ func InitDb() {
 	*/
 
 	//Set connection string here, use mysql username password and schema at your pc
-	connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local"
-
+	//connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local"
+	connectionString := "root:Minus12345@tcp(localhost:3306)/alta_shop_project?charset=utf8&parseTime=True&loc=Local" // doni local computer
 	var err error
 	DB, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {
@@ -44,5 +45,7 @@ func InitPort() {
 }
 
 func InitMigrate() {
-	// DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&model.User{})
+	DB.AutoMigrate(&model.Product{})
+	DB.AutoMigrate(&model.Shopping_cart{})
 }

@@ -11,3 +11,11 @@ func InputItem(products model.Product) (interface{}, error) {
 	}
 	return products, nil
 }
+
+func GetOneProduct(id_product int) (model.Product, error) {
+	var product model.Product
+	if err := config.DB.Find(&product, "id_product=?", id_product).Error; err != nil {
+		return product, err
+	}
+	return product, nil
+}
