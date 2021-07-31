@@ -21,9 +21,9 @@ func GetProductInCart() (interface{}, error) {
 	return shopping_carts, nil
 }
 
-func GetOneProduct(id_product int) (model.Product, error) {
+func GetOneProduct(product_id int) (model.Product, error) {
 	var product model.Product
-	if err := config.DB.Find(&product, "id_product=?", id_product).Error; err != nil {
+	if err := config.DB.Find(&product, "id=?", product_id).Error; err != nil {
 		return product, err
 	}
 	return product, nil
