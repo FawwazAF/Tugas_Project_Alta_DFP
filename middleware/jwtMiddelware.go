@@ -26,6 +26,5 @@ func ExtractTokenUserId(c echo.Context) int {
 		userId := int(claims["userId"].(float64))
 		return userId
 	}
-
 	return 0
 }
