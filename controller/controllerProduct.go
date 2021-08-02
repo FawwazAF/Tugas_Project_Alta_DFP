@@ -17,12 +17,12 @@ func ProductInCart(c echo.Context) error {
 	// 		"message": "please login first",
 	// 	})
 	// }
-	product, err := database.GetProductInCart()
+	shopping_carts, err := database.GetProductInCart()
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success get product in cart",
-		"user":    product,
+		"user":    shopping_carts,
 	})
 }

@@ -39,4 +39,7 @@ func New(e *echo.Echo) {
 	eJwt.Use(middleware.JWT([]byte(constant.SECRET_JWT)))
 	eJwt.POST("/checkout/:id", controller.Checkout)
 
+	//Transaction
+	eJwt.POST("/transaction/:id", controller.TransactionController)
+
 }

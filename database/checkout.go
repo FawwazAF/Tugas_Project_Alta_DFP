@@ -6,9 +6,13 @@ import (
 )
 
 //GET total price and Qty
-func GetTotal() (model.Checkout, error) {
+func CheckoutRecord(id int) (model.Checkout, error) {
 	var shopping_carts []model.Shopping_cart
 	var checkout model.Checkout
+	var user model.User
+	if err := config.DB.Find(&user, "id = ?", id).Error; err != nil {
+		return checkout, err
+	}
 	if err := config.DB.Find(&shopping_carts).Error; err != nil {
 		return checkout, err
 	}
@@ -21,6 +25,8 @@ func GetTotal() (model.Checkout, error) {
 	checkout = model.Checkout{
 		Total_qty:   total_qty,
 		Total_price: total_price,
+		User:        user.Name,
+		User_id:     id,
 	}
 	if err := config.DB.Save(&checkout).Error; err != nil {
 		return checkout, err
