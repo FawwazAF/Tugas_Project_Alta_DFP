@@ -2,6 +2,7 @@ package controller
 
 import (
 	"alta/project/database"
+	"alta/project/model"
 	"net/http"
 	"strconv"
 
@@ -30,8 +31,11 @@ func CreateShoppingCartController(c echo.Context) error {
 			"message": "can not fetch data product by id",
 		})
 	}
+	//Binding JSON
+	var shopping_carts model.Shopping_cart
+	c.Bind(&shopping_carts)
 	// insert product into cart
-	new_shopping_cart, err := database.InsertProductIntoCart(user_id, product_id, get_product)
+	new_shopping_cart, err := database.InsertProductIntoCart(user_id, product_id, get_product, shopping_carts.Qty)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
 			"message": "can not fetch data",
