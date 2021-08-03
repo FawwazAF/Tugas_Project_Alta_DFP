@@ -1,16 +1,19 @@
 package routes
 
 import (
+	"alta/project/constant"
 	"alta/project/controller"
 
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func New(e *echo.Echo) {
 	//Basic Routes for Skeleton **Dont Touch**
-	e.GET("/users", controller.GetManyController)
-	e.POST("/products", controller.NewItem)
-	e.DELETE("/users/:id", controller.DeleteUser)
+	e.GET("/users", controller.GetManyUsersController)
+	e.GET("/products", controller.GetManyProductsController)
+	e.POST("/products", controller.NewItemController)
+	e.DELETE("/users/:id", controller.DeleteUserController)
 
 	//Work your code here
 
@@ -30,5 +33,13 @@ func New(e *echo.Echo) {
 
 	//Login
 	e.POST("/login", controller.LoginUser)
+
+	//Checkout
+	eJwt := e.Group("/jwt")
+	eJwt.Use(middleware.JWT([]byte(constant.SECRET_JWT)))
+	eJwt.POST("/checkout/:id", controller.Checkout)
+
+	//Transaction
+	eJwt.POST("/transaction/:id", controller.TransactionController)
 
 }

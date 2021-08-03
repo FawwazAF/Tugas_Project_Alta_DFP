@@ -66,7 +66,7 @@ func DeleteShoppingCartController(c echo.Context) error {
 		})
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"status": "success delete user",
+		"status": "success delete shopiing cart",
 		"users":  delete_shopping_cart,
 	})
 }

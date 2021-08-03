@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-func GetManyController(c echo.Context) error {
+func GetManyUsersController(c echo.Context) error {
 	users, err := database.GetUsers()
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
@@ -21,7 +21,18 @@ func GetManyController(c echo.Context) error {
 	})
 }
 
-func NewItem(c echo.Context) error {
+func GetManyProductsController(c echo.Context) error {
+	users, err := database.GetProducts()
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"status": "success",
+		"users":  users,
+	})
+}
+
+func NewItemController(c echo.Context) error {
 	// binding data
 	Product := model.Product{}
 	c.Bind(&Product)
@@ -36,7 +47,7 @@ func NewItem(c echo.Context) error {
 	})
 }
 
-func DeleteUser(c echo.Context) error {
+func DeleteUserController(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
