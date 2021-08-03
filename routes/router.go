@@ -15,6 +15,8 @@ func New(e *echo.Echo) {
 	//Work your code here
 
 	//GET show all product by category and type (Mba patmiza)
+	e.GET("/products/:category", controller.GetProductCategoryController)
+	e.GET("/products/:category/:type", controller.GetProductTypeController)
 
 	//POST Add product to shopping cart (Mas Doni)
 	e.POST("carts/:user_id/:product_id", controller.CreateShoppingCartController)

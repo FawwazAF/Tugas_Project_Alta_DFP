@@ -28,3 +28,19 @@ func GetOneProduct(product_id int) (model.Product, error) {
 	}
 	return product, nil
 }
+
+func GetProductCategory(category string) (interface{}, error) {
+	var products []model.Product
+	if err := config.DB.Where("category=?", category).Find(&products).Error; err != nil {
+		return products, err
+	}
+	return products, nil
+}
+
+func GetProductType(product_category, product_type string) (interface{}, error) {
+	var products []model.Product
+	if err := config.DB.Where("category=? AND type=?", product_category, product_type).Find(&products).Error; err != nil {
+		return products, err
+	}
+	return products, nil
+}

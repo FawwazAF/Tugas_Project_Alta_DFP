@@ -26,3 +26,32 @@ func ProductInCart(c echo.Context) error {
 		"user":    product,
 	})
 }
+
+func GetProductCategoryController(c echo.Context) error {
+	product_category := c.Param("category")
+	GetProductCategory, err := database.GetProductCategory(product_category)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"message": "can not fetch data",
+		})
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success get product category",
+		"product": GetProductCategory,
+	})
+}
+
+func GetProductTypeController(c echo.Context) error {
+	product_category := c.Param("category")
+	product_type := c.Param("type")
+	GetProductType, err := database.GetProductType(product_category, product_type)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"message": "can not fetch data",
+		})
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success get product category",
+		"product": GetProductType,
+	})
+}
