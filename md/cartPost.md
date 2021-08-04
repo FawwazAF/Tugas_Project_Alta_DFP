@@ -8,9 +8,9 @@ Data constraint :
 * :user_id = id from user (need to [register](register.md) first)
 * :product_id = id from product 
 
-To get list all of the users products :
-* GET /products
-* GET /users
+* To get list all of the users products :
+    - GET /products
+    - GET /users
 
 * qty = Quantity product :
 ```json
