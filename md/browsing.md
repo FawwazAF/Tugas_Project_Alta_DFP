@@ -1,35 +1,21 @@
-# Input product into cart
+# Browsing Product
 
-To input product into cart
+Browsing product is an API to get list of products that available
 
-## How to do
+## Product that available
 
-Data constraint :
-* :user_id = id from user (need to [register](register.md) first)
-* :product_id = id from product 
+Currently the products that available based on its category and type is :
 
-* qty = Quantity product :
-```json
-{
-    "qty": "[more than 1]"
-}
-```
-
-To get list all of the users products :
-* GET /products
-* GET /users
+* category: gadget, aksesoris
+* type: hp,laptop
 
 Example :
 
-Input product : POST /carts/1/1
-```json
-{
-    "qty": 5
-}
-```
+* List by category only : POST /products/gadget
+* List by category and type : POST /products/aksesoris/laptop
 
 ## Error 
 
-**Condition** : if 'user_id' and 'product_id' not exist in database
+**Condition** : if 'category' and 'type' not exist in database
 
-
+To see all products that available : GET /products
