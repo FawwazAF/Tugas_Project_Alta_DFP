@@ -6,7 +6,7 @@ Browsing product is an API to get list of products that available
 
 Currently the products that available based on its category and type is :
 
-* category: gadget, aksesoris
+* category: gadget, accessories
 * type: hp,laptop
 
 Example :
