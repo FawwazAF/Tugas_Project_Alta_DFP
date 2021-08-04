@@ -12,7 +12,7 @@ Currently the products that available based on its category and type is :
 Example :
 
 * List by category only : POST /products/gadget
-* List by category and type : POST /products/aksesoris/laptop
+* List by category and type : POST /products/accessories/laptop
 
 ## Error 
 
